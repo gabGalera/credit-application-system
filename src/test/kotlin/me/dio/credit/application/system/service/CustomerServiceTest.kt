@@ -45,7 +45,11 @@ class CustomerServiceTest {
         //when
         val actual: Customer = customerService.findById(fakeId)
         //then
+        Assertions.assertThat(actual).isNotNull
         Assertions.assertThat(actual).isExactlyInstanceOf(Customer::class.java)
+        Assertions.assertThat(actual).isSameAs(fakeCustomer)
+        verify(exactly = 1) { customerRepository.findById(fakeId) }
+
     }
 
     private fun buildCustomer(

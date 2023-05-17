@@ -53,8 +53,8 @@
 
 👋🏽 Entre em contato!
 
-[![Linkedin Badge](https://img.shields.io/badge/-Camila-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/cami-la/)](https://www.linkedin.com/in/gabriel-galera/)
-[![Gmail Badge](https://img.shields.io/badge/-camiladsantoscavalcante@gmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:gabgalera@hotmail.com)](mailto:gabgalera@hotmail.com)
+[![Linkedin Badge](https://img.shields.io/badge/-Gabriel-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/gabriel-galera/)](https://www.linkedin.com/in/gabriel-galera/)
+[![Gmail Badge](https://img.shields.io/badge/-gabgalera@hotmail.com-c14438?style=flat-square&logo=Gmail&logoColor=white&link=mailto:gabgalera@hotmail.com)](mailto:gabgalera@hotmail.com)
 <hr>
 
 <h3>Autora e Instrutora</h3>
