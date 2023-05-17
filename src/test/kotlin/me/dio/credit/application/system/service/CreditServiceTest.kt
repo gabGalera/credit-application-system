@@ -74,6 +74,21 @@ class CreditServiceTest {
         verify (exactly = 1) { creditRepository.findByCreditCode(fakeCreditCode) }
     }
 
+    @Test
+    fun `should not match credit owner and throw IllegalArgumentException` () {
+        //given
+        val fakeCreditCode: UUID = UUID.randomUUID()
+        val fakeCustomerId: Long = Random().nextLong()
+        val fakeCredit: Credit = buildCredit()
+        every { creditRepository.findByCreditCode(fakeCreditCode) } returns fakeCredit
+        //when
+        //then
+        Assertions.assertThatExceptionOfType(IllegalArgumentException::class.java)
+            .isThrownBy { creditService.findByCreditCode(fakeCustomerId, fakeCreditCode) }
+            .withMessage("Contact admin")
+        verify (exactly = 1) { creditRepository.findByCreditCode(fakeCreditCode) }
+    }
+
     private fun buildCredit(
        creditCode: UUID = UUID.randomUUID(),
        creditValue: BigDecimal = BigDecimal.valueOf(1000000.0),
