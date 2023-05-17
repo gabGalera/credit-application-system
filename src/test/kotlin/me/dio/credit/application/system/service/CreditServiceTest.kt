@@ -20,6 +20,7 @@ import org.springframework.test.context.ActiveProfiles
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.*
+import kotlin.collections.List
 
 @ActiveProfiles("test")
 @ExtendWith(MockKExtension::class)
@@ -42,6 +43,15 @@ class CreditServiceTest {
         Assertions.assertThat(actual).isSameAs(fakeCredit)
         verify (exactly = 1) { customerService.findById(any()) }
         verify (exactly = 1) { creditRepository.save(fakeCredit) }
+    }
+
+    @Test
+    fun `should find all customers by id` () {
+        //given
+        val fakeId: Long = Random().nextLong()
+        val fakeCredits: List<Credit> = List(size=1, init = { buildCredit(id = fakeId) })
+        every { creditRepository.findAllByCustomerId(fakeId) } returns fakeCredits
+        //when
     }
 
     private fun buildCredit(
