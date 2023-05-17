@@ -61,6 +61,19 @@ class CreditServiceTest {
     }
 
     @Test
+    fun `should not find all customers by id and throw BusinessException`() {
+        //given
+        val fakeId: Long = Random().nextLong()
+        val fakeCredits: List<Credit> = List(size=1, init = { buildCredit(id = fakeId) })
+        every { creditRepository.findAllByCustomerId(fakeId) } returns Optional.empty()
+        //when
+        //then
+        Assertions.assertThatExceptionOfType(BusinessException::class.java)
+            .isThrownBy { creditService.findAllByCustomer(fakeId) }
+            .withMessage("Id $fakeId not found")
+        verify (exactly = 1) { creditRepository.findAllByCustomerId(fakeId) }
+    }
+    @Test
     fun `should not find credit by code and throw BusinessException`() {
         //given
         val fakeCreditCode: UUID = UUID.randomUUID()
