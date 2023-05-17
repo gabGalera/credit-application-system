@@ -10,6 +10,7 @@ import me.dio.credit.application.system.entity.Address
 import me.dio.credit.application.system.entity.Credit
 import me.dio.credit.application.system.entity.Customer
 import me.dio.credit.application.system.enummeration.Status
+import me.dio.credit.application.system.exception.BusinessException
 import me.dio.credit.application.system.repository.CreditRepository
 import me.dio.credit.application.system.service.impl.CreditService
 import me.dio.credit.application.system.service.impl.CustomerService
@@ -57,6 +58,20 @@ class CreditServiceTest {
         Assertions.assertThat(actual).isNotNull
         Assertions.assertThat(actual).isSameAs(fakeCredits)
         verify(exactly = 1) { creditRepository.findAllByCustomerId(fakeId) }
+    }
+
+    @Test
+    fun `should not find credit by code and throw BusinessException`() {
+        //given
+        val fakeCreditCode: UUID = UUID.randomUUID()
+        val fakeCustomerId: Long = Random().nextLong()
+        every { creditRepository.findByCreditCode(fakeCreditCode) } returns null
+        //when
+        //then
+        Assertions.assertThatExceptionOfType(BusinessException::class.java)
+            .isThrownBy { creditService.findByCreditCode(fakeCustomerId, fakeCreditCode) }
+            .withMessage("Creditcode $fakeCreditCode not found")
+        verify (exactly = 1) { creditRepository.findByCreditCode(fakeCreditCode) }
     }
 
     private fun buildCredit(
