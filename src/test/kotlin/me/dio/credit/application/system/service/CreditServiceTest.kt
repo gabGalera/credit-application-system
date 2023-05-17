@@ -50,8 +50,13 @@ class CreditServiceTest {
         //given
         val fakeId: Long = Random().nextLong()
         val fakeCredits: List<Credit> = List(size=1, init = { buildCredit(id = fakeId) })
-        every { creditRepository.findAllByCustomerId(fakeId) } returns fakeCredits
+        every { creditRepository.findAllByCustomerId(fakeId) } returns Optional.of(fakeCredits)
         //when
+        val actual: List<Credit> = creditService.findAllByCustomer(fakeId)
+        //then
+        Assertions.assertThat(actual).isNotNull
+        Assertions.assertThat(actual).isSameAs(fakeCredits)
+        verify(exactly = 1) { creditRepository.findAllByCustomerId(fakeId) }
     }
 
     private fun buildCredit(
