@@ -60,6 +60,7 @@ class CreditRepositoryTest {
         //then
         Assertions.assertThat(creditList).isNotEmpty
         Assertions.assertThat(creditList.get().size).isEqualTo(2)
+        Assertions.assertThat(creditList.get()).contains(credit1, credit2)
     }
 
     private fun buildCredit(
