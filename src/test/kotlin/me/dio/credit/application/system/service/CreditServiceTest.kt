@@ -102,6 +102,16 @@ class CreditServiceTest {
         verify (exactly = 1) { creditRepository.findByCreditCode(fakeCreditCode) }
     }
 
+    @Test
+    fun `should not save with invalid localDate`() {
+        //given
+        val fakeCredit: Credit = buildCredit(dayFirstInstallment=LocalDate.now().plusYears(3))
+        //when
+        //then
+        Assertions.assertThatExceptionOfType(BusinessException::class.java)
+            .isThrownBy { creditService.save(fakeCredit) }
+            .withMessage("Invalid Date")
+    }
     private fun buildCredit(
        creditCode: UUID = UUID.randomUUID(),
        creditValue: BigDecimal = BigDecimal.valueOf(1000000.0),
