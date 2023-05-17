@@ -23,7 +23,7 @@
 
 <h3>Descrição do Projeto</h3>
 <p><a href="https://gist.github.com/cami-la/560b455b901778391abd2c9edea81286">https://gist.github.com/cami-la/560b455b901778391abd2c9edea81286</a></p>
-<p>Este repositório foi criado como parte do desafio do bootcamp da empresa TQI junto com a DIO. Foi desenvolvida nas aulas a API e os objetivos do desafio são complementar o código e criar testes para a entity Credit.</p>
+<p>Este repositório foi criado como parte do desafio do bootcamp da empresa TQI junto com a DIO. Foi desenvolvida nas aulas a API e os objetivos do desafio são complementar o código e criar testes para o CreditService.</p>
 <figure>
 <p align="center">
   <img src="https://i.imgur.com/7phya16.png" height="350" width="450" alt="API para Sistema de Avaliação de Créditos"/><br>
@@ -44,7 +44,7 @@
 <a href="https://drive.google.com/file/d/1wxwioDHS1sKFPq4G7b24tVZb-XMnoj-l/view?usp=share_link"> 🚀 Collection Sacola API - Postman</a><br>
 
 
-<h3>Autor e aluno</h3>
+<h3>Autor e Aluno</h3>
 
 <a href="https://www.linkedin.com/in/gabriel-galera/">
  <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/108902929?v=4" width="100px;" alt=""/>
