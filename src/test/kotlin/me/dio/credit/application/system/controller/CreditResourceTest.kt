@@ -100,6 +100,30 @@ class CreditResourceTest {
             .andDo(MockMvcResultHandlers.print())
     }
 
+    @Test
+    fun `should find by credit code and return 200 status` () {
+        //given
+        val creditDto: CreditDto = builderCreditDto()
+        val customerDto: CustomerDto = builderCustomerDto()
+        val valueAsStringCustomer: String = objectMapper.writeValueAsString(customerDto)
+        val valueAsStringCredit: String = objectMapper.writeValueAsString(creditDto)
+        mockMvc.perform(MockMvcRequestBuilders
+            .post(CustomerResourceTest.URL)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(valueAsStringCustomer))
+        mockMvc.perform(MockMvcRequestBuilders
+            .post(URL)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(valueAsStringCredit))
+        //when
+        val credits: Optional<List<Credit>> = creditRepository.findAllByCustomerId(1)
+        //then
+        mockMvc.perform(MockMvcRequestBuilders
+            .get("$URL/${credits.get()[0].creditCode}?customerId=1")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.status().isOk)
+            .andDo(MockMvcResultHandlers.print())
+    }
     private fun builderCreditDto(
         creditValue: BigDecimal = BigDecimal.valueOf(1000000.0),
         dayFirstOfInstallment: LocalDate = LocalDate.now().plusMonths(1),
