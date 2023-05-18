@@ -25,7 +25,7 @@
 <p><a href="https://gist.github.com/cami-la/560b455b901778391abd2c9edea81286">https://gist.github.com/cami-la/560b455b901778391abd2c9edea81286</a></p>
 <p>Este repositório foi criado como parte do desafio do bootcamp da empresa TQI junto 
 com a DIO. Os objetivos do desafio são complementar o código e 
-criar testes para os arquivos CreditService e o CreditResource, enquanto a API e os outros testes foram desenvolvidos durante as aulas.</p>
+criar testes para os arquivos CreditService e o CreditResource, enquanto a API e os outros testes foram desenvolvidos durante as aulas junto com a instrutora Camila Cavalcante.</p>
 <figure>
 <p align="center">
   <img src="https://i.imgur.com/7phya16.png" height="350" width="450" alt="API para Sistema de Avaliação de Créditos"/><br>
