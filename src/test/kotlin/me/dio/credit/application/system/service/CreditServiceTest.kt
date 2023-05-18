@@ -115,7 +115,7 @@ class CreditServiceTest {
     private fun buildCredit(
        creditCode: UUID = UUID.randomUUID(),
        creditValue: BigDecimal = BigDecimal.valueOf(1000000.0),
-       dayFirstInstallment: LocalDate = LocalDate.of(2023, 5,17),
+       dayFirstInstallment: LocalDate = LocalDate.now().plusMonths(1),
        numberOfInstallments: Int = 0,
        status: Status = Status.IN_PROGRESS,
        firstName: String = "Gabriel",
