@@ -62,17 +62,41 @@ class CreditResourceTest {
         val customerDto: CustomerDto = builderCustomerDto()
         val valueAsStringCustomer: String = objectMapper.writeValueAsString(customerDto)
         val valueAsStringCredit: String = objectMapper.writeValueAsString(creditDto)
-        //when
         mockMvc.perform(MockMvcRequestBuilders
             .post(CustomerResourceTest.URL)
             .contentType(MediaType.APPLICATION_JSON)
             .content(valueAsStringCustomer))
+        //when
         //then
         mockMvc.perform(MockMvcRequestBuilders
                 .post(URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(valueAsStringCredit))
             .andExpect(MockMvcResultMatchers.status().isCreated)
+            .andDo(MockMvcResultHandlers.print())
+    }
+
+    @Test
+    fun `should find all customers by id and return 200 status`() {
+        //given
+        val creditDto: CreditDto = builderCreditDto()
+        val customerDto: CustomerDto = builderCustomerDto()
+        val valueAsStringCustomer: String = objectMapper.writeValueAsString(customerDto)
+        val valueAsStringCredit: String = objectMapper.writeValueAsString(creditDto)
+        mockMvc.perform(MockMvcRequestBuilders
+            .post(CustomerResourceTest.URL)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(valueAsStringCustomer))
+        mockMvc.perform(MockMvcRequestBuilders
+            .post(URL)
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(valueAsStringCredit))
+        //when
+        //then
+        mockMvc.perform(MockMvcRequestBuilders
+            .get("$URL?customerId=1")
+            .accept(MediaType.APPLICATION_JSON))
+            .andExpect(MockMvcResultMatchers.status().isOk)
             .andDo(MockMvcResultHandlers.print())
     }
 
